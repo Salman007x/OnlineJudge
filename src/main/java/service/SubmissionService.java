@@ -1,5 +1,6 @@
 package service;
 
+import judge.SimpleJudge;
 import model.Submission;
 import repository.SubmissionRepository;
 
@@ -44,8 +45,19 @@ public class SubmissionService {
 
             return;
         }
-
-        repository.addSubmission(submission);
+        String verdict = SimpleJudge.judge(
+                submission.getCode()
+        );
+        Submission finalSubmission =
+                new Submission(
+                        submission.getId(),
+                        submission.getUserId(),
+                        submission.getProblemId(),
+                        submission.getLanguage(),
+                        submission.getCode(),
+                        verdict
+                );
+        repository.addSubmission(finalSubmission);
     }
 
     public Submission getSubmissionById(

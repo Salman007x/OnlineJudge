@@ -87,12 +87,7 @@ public class SubmissionMenu {
                 String code =
                         scan.nextLine();
 
-                System.out.print(
-                        "Enter Verdict: "
-                );
 
-                String verdict =
-                        scan.nextLine();
 
                 Submission submission =
                         new Submission(
@@ -101,7 +96,7 @@ public class SubmissionMenu {
                                 problemId,
                                 language,
                                 code,
-                                verdict
+                                ""
                         );
 
                 submissionService.addSubmission(

@@ -1,7 +1,4 @@
-import menus.ContestMenu;
-import menus.ProblemMenu;
-import menus.SubmissionMenu;
-import menus.UserMenu;
+import menus.*;
 
 import service.*;
 
@@ -32,6 +29,9 @@ public class Main {
         LeaderboardService leaderboardService =
                 new LeaderboardService();
 
+        TestCaseService testCaseService =
+                new TestCaseService();
+
         Scanner scan = new Scanner(System.in);
 
         while (true) {
@@ -57,7 +57,11 @@ public class Main {
             );
 
             System.out.println(
-                    "5. Exit"
+                    "5. Test Case Menu"
+            );
+
+            System.out.println(
+                    "6. Exit"
             );
 
             System.out.print(
@@ -111,13 +115,17 @@ public class Main {
 
                 case 5:
 
-                    System.out.println(
-                            "Exiting Application..."
+                    TestCaseMenu.show(
+                            scan,
+                            testCaseService
                     );
 
-                    scan.close();
+                    break;
 
-                    System.exit(0);
+                case 6:
+
+                    System.out.println("Exiting Application");
+                    return;
 
                 default:
 
