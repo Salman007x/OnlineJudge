@@ -1,0 +1,121 @@
+import menus.ContestMenu;
+import menus.ProblemMenu;
+import menus.SubmissionMenu;
+import menus.UserMenu;
+
+import service.ContestService;
+import service.ProblemService;
+import service.SubmissionService;
+import service.UserService;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ProblemService problemService =
+                new ProblemService();
+
+        UserService userService =
+                new UserService();
+
+        SubmissionService submissionService =
+                new SubmissionService();
+
+        ContestService contestService =
+                new ContestService();
+
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println(
+                    "\n===== ONLINE JUDGE ====="
+            );
+
+            System.out.println(
+                    "1. Problem Management"
+            );
+
+            System.out.println(
+                    "2. User Management"
+            );
+
+            System.out.println(
+                    "3. Submission Management"
+            );
+
+            System.out.println(
+                    "4. Contest Management"
+            );
+
+            System.out.println(
+                    "5. Exit"
+            );
+
+            System.out.print(
+                    "Enter Choice: "
+            );
+
+            int choice = scan.nextInt();
+
+            scan.nextLine();
+
+            switch (choice) {
+
+                case 1:
+
+                    ProblemMenu.show(
+                            scan,
+                            problemService
+                    );
+
+                    break;
+
+                case 2:
+
+                    UserMenu.show(
+                            scan,
+                            userService
+                    );
+
+                    break;
+
+                case 3:
+
+                    SubmissionMenu.show(
+                            scan,
+                            submissionService
+                    );
+
+                    break;
+
+                case 4:
+
+                    ContestMenu.show(
+                            scan,
+                            contestService
+                    );
+
+                    break;
+
+                case 5:
+
+                    System.out.println(
+                            "Exiting Application..."
+                    );
+
+                    scan.close();
+
+                    System.exit(0);
+
+                default:
+
+                    System.out.println(
+                            "Invalid Choice"
+                    );
+            }
+        }
+    }
+}
