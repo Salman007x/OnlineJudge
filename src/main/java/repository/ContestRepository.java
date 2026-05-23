@@ -86,14 +86,18 @@ public class ContestRepository {
                     contest.getTitle()
             );
 
-            statement.setString(
+            statement.setTimestamp(
                     2,
-                    contest.getStartTime()
+                    java.sql.Timestamp.valueOf(
+                            contest.getStartTime()
+                    )
             );
 
-            statement.setString(
+            statement.setTimestamp(
                     3,
-                    contest.getEndTime()
+                    java.sql.Timestamp.valueOf(
+                            contest.getEndTime()
+                    )
             );
 
             statement.executeUpdate();

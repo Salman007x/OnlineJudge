@@ -3,10 +3,7 @@ import menus.ProblemMenu;
 import menus.SubmissionMenu;
 import menus.UserMenu;
 
-import service.ContestService;
-import service.ProblemService;
-import service.SubmissionService;
-import service.UserService;
+import service.*;
 
 import java.util.Scanner;
 
@@ -25,6 +22,12 @@ public class Main {
 
         ContestService contestService =
                 new ContestService();
+
+        ContestProblemService contestProblemService =
+                new ContestProblemService();
+
+        ContestUserService contestUserService =
+                new ContestUserService();
 
         Scanner scan = new Scanner(System.in);
 
@@ -95,7 +98,9 @@ public class Main {
 
                     ContestMenu.show(
                             scan,
-                            contestService
+                            contestService,
+                            contestProblemService,
+                            contestUserService
                     );
 
                     break;
