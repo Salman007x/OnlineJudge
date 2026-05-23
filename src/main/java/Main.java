@@ -29,6 +29,9 @@ public class Main {
         ContestUserService contestUserService =
                 new ContestUserService();
 
+        LeaderboardService leaderboardService =
+                new LeaderboardService();
+
         Scanner scan = new Scanner(System.in);
 
         while (true) {
@@ -100,7 +103,8 @@ public class Main {
                             scan,
                             contestService,
                             contestProblemService,
-                            contestUserService
+                            contestUserService,
+                            leaderboardService
                     );
 
                     break;

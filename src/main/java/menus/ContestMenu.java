@@ -7,6 +7,7 @@ import model.ContestUser;
 import service.ContestProblemService;
 import service.ContestService;
 import service.ContestUserService;
+import service.LeaderboardService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,7 +18,8 @@ public class ContestMenu {
             Scanner scan,
             ContestService contestService,
             ContestProblemService contestProblemService,
-            ContestUserService contestUserService
+            ContestUserService contestUserService,
+            LeaderboardService leaderboardService
     ) {
 
         System.out.println(
@@ -33,6 +35,7 @@ public class ContestMenu {
         System.out.println("7. Join Contest");
         System.out.println("8. View Contest Problems");
         System.out.println("9. View Contest Participants");
+        System.out.println("10. Show Leaderboard");
 
         System.out.print("Enter Choice: ");
 
@@ -281,6 +284,21 @@ public class ContestMenu {
                         contestUser.display();
                     }
                 }
+
+                break;
+
+            case 10:
+
+                System.out.print(
+                        "Enter Contest ID: "
+                );
+
+                int leaderboardContestId =
+                        scan.nextInt();
+
+                leaderboardService.showLeaderboard(
+                        leaderboardContestId
+                );
 
                 break;
 
