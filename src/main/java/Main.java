@@ -1,5 +1,4 @@
 import menus.*;
-import executor.*;
 import service.*;
 
 import java.util.Scanner;
@@ -7,8 +6,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-       JudgeDemo.runDemo();
 
         ProblemService problemService =
                 new ProblemService();
@@ -34,7 +31,8 @@ public class Main {
         TestCaseService testCaseService =
                 new TestCaseService();
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scan =
+                new Scanner(System.in);
 
         while (true) {
 
@@ -70,7 +68,8 @@ public class Main {
                     "Enter Choice: "
             );
 
-            int choice = scan.nextInt();
+            int choice =
+                    scan.nextInt();
 
             scan.nextLine();
 
@@ -79,7 +78,9 @@ public class Main {
                 case 1:
 
                     ProblemMenu.show(
+
                             scan,
+
                             problemService
                     );
 
@@ -88,7 +89,9 @@ public class Main {
                 case 2:
 
                     UserMenu.show(
+
                             scan,
+
                             userService
                     );
 
@@ -97,7 +100,9 @@ public class Main {
                 case 3:
 
                     SubmissionMenu.show(
+
                             scan,
+
                             submissionService
                     );
 
@@ -106,10 +111,15 @@ public class Main {
                 case 4:
 
                     ContestMenu.show(
+
                             scan,
+
                             contestService,
+
                             contestProblemService,
+
                             contestUserService,
+
                             leaderboardService
                     );
 
@@ -118,7 +128,9 @@ public class Main {
                 case 5:
 
                     TestCaseMenu.show(
+
                             scan,
+
                             testCaseService
                     );
 
@@ -126,7 +138,10 @@ public class Main {
 
                 case 6:
 
-                    System.out.println("Exiting Application");
+                    System.out.println(
+                            "Exiting Application"
+                    );
+
                     return;
 
                 default:

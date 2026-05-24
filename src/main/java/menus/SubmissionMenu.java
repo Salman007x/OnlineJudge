@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class SubmissionMenu {
 
     public static void show(
+
             Scanner scan,
+
             SubmissionService submissionService
     ) {
 
@@ -17,15 +19,32 @@ public class SubmissionMenu {
                 "\n===== SUBMISSION MANAGEMENT ====="
         );
 
-        System.out.println("1. View Submissions");
-        System.out.println("2. Add Submission");
-        System.out.println("3. Search Submission By ID");
-        System.out.println("4. Update Verdict");
-        System.out.println("5. Delete Submission");
+        System.out.println(
+                "1. View Submissions"
+        );
 
-        System.out.print("Enter Choice: ");
+        System.out.println(
+                "2. Add Submission"
+        );
 
-        int choice = scan.nextInt();
+        System.out.println(
+                "3. Search Submission By ID"
+        );
+
+        System.out.println(
+                "4. Update Verdict"
+        );
+
+        System.out.println(
+                "5. Delete Submission"
+        );
+
+        System.out.print(
+                "Enter Choice: "
+        );
+
+        int choice =
+                scan.nextInt();
 
         scan.nextLine();
 
@@ -34,9 +53,12 @@ public class SubmissionMenu {
             case 1:
 
                 ArrayList<Submission> submissions =
-                        submissionService.getAllSubmissions();
+                        submissionService
+                                .getAllSubmissions();
 
-                if (submissions.isEmpty()) {
+                if (
+                        submissions.isEmpty()
+                ) {
 
                     System.out.println(
                             "No Submissions Found"
@@ -80,28 +102,57 @@ public class SubmissionMenu {
                 String language =
                         scan.nextLine();
 
-                System.out.print(
-                        "Enter Code: "
+                System.out.println(
+                        "Enter Code:"
                 );
 
+                System.out.println(
+                        "Type END on separate line to finish"
+                );
+
+                StringBuilder codeBuilder =
+                        new StringBuilder();
+
+                while (true) {
+
+                    String line =
+                            scan.nextLine();
+
+                    if (
+                            line.equals("END")
+                    ) {
+
+                        break;
+                    }
+
+                    codeBuilder
+                            .append(line)
+                            .append("\n");
+                }
+
                 String code =
-                        scan.nextLine();
-
-
+                        codeBuilder.toString();
 
                 Submission submission =
                         new Submission(
+
                                 0,
+
                                 userId,
+
                                 problemId,
+
                                 language,
+
                                 code,
+
                                 ""
                         );
 
-                submissionService.addSubmission(
-                        submission
-                );
+                submissionService
+                        .addSubmission(
+                                submission
+                        );
 
                 break;
 
@@ -115,11 +166,14 @@ public class SubmissionMenu {
                         scan.nextInt();
 
                 Submission foundSubmission =
-                        submissionService.getSubmissionById(
-                                searchId
-                        );
+                        submissionService
+                                .getSubmissionById(
+                                        searchId
+                                );
 
-                if (foundSubmission != null) {
+                if (
+                        foundSubmission != null
+                ) {
 
                     foundSubmission.display();
 
@@ -150,10 +204,13 @@ public class SubmissionMenu {
                 String newVerdict =
                         scan.nextLine();
 
-                submissionService.updateVerdict(
-                        updateId,
-                        newVerdict
-                );
+                submissionService
+                        .updateVerdict(
+
+                                updateId,
+
+                                newVerdict
+                        );
 
                 break;
 
@@ -166,9 +223,10 @@ public class SubmissionMenu {
                 int deleteId =
                         scan.nextInt();
 
-                submissionService.deleteSubmission(
-                        deleteId
-                );
+                submissionService
+                        .deleteSubmission(
+                                deleteId
+                        );
 
                 break;
 
