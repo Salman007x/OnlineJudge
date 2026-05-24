@@ -1,5 +1,5 @@
 import menus.*;
-
+import executor.*;
 import service.*;
 
 import java.util.Scanner;
@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        RunDemo.runDemo();
 
         ProblemService problemService =
                 new ProblemService();
