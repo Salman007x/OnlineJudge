@@ -13,6 +13,7 @@ public class Verdict {
 
     public static final String RUNTIME_ERROR =
             "RUNTIME_ERROR";
+
     public static final String COMPILATION_ERROR =
             "COMPILATION_ERROR";
 }

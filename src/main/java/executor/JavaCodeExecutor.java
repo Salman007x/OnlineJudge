@@ -2,7 +2,7 @@ package executor;
 
 import model.TestCase;
 import utils.Verdict;
-
+import java.util.concurrent.TimeUnit;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
@@ -74,6 +74,21 @@ public class JavaCodeExecutor {
 
                 processInput.close();
 
+
+                boolean completed =
+                        runProcess.waitFor(
+                                2,
+                                TimeUnit.SECONDS
+                        );
+
+                if (!completed) {
+
+                    runProcess.destroy();
+
+                    return Verdict.TIME_LIMIT_EXCEEDED;
+                }
+
+
                 BufferedReader reader =
                         new BufferedReader(
 
@@ -85,8 +100,6 @@ public class JavaCodeExecutor {
 
                 String actualOutput =
                         reader.readLine();
-
-                runProcess.waitFor();
 
                 int runExitCode =
                         runProcess.exitValue();
