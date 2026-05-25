@@ -88,7 +88,15 @@ public class JavaCodeExecutor {
 
                 runProcess.waitFor();
 
+                int runExitCode =
+                        runProcess.exitValue();
+
                 reader.close();
+
+                if (runExitCode != 0) {
+
+                    return Verdict.RUNTIME_ERROR;
+                }
 
                 if (actualOutput == null) {
 
